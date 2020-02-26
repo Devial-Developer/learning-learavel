@@ -36,7 +36,7 @@
 
    <div class="form-group">
     <label for="sel1">Category</label>
-     <select class="form-control" id="sel1" name="category_select">
+     <select class="form-control" id="sel2" name="category_select">
      </select>
   </div>
 
@@ -57,6 +57,9 @@
         },
         success:function(data){
           console.log(data);
+         
+            $('#sel2').append("<option>"+val+"</option>")
+
         }
       });
 
