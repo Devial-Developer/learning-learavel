@@ -44,9 +44,17 @@ Route::get('showCategory', 'CategoryController@showCategory')->name('showCategor
 
 //posts
 Route::get('post', 'PostController@FunctionNamePost');
+//insert data
 Route::get('postCode', 'PostController@postCode');
 
-Route::get('select/{type}', 'PostController@categoryType');
+//post edit..
+Route::get('post/edit/{id}', 'PostController@editPost')->name('editPost');
+
+Route::get('getCategory/{type}', 'PostController@getCategory');
 
 // //fetch data
-// Route::get('showPost', 'PostController@showPost')->name('showPost');
+Route::get('showPost', 'PostController@showPost')->name('showPost');
+//post delete
+Route::get('delete/{id}', 'PostController@delete')->name('deletePost');
+//post delete
+Route::get('delete-category/{id}', 'CategoryController@delete_category')->name('delete_category');

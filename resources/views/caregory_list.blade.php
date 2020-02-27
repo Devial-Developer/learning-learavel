@@ -1,28 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
 
-<div class="container m-5" >
-  <h2>Category-List Table</h2> <button class="btn btn-info m-5" style="position:absolute; top:10px; right:50px;" onclick="window.history.back()">back</button>
+@extends('dashboard')
 
-  <table class="table ml-5">
+@section('content')
+
+
+<div class="container pb-5" >
+  <h2>Category-List Table</h2>
+
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Id</th>
         <th>Category-Name</th>
         <th>Select option</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-light">
 
             @foreach($users as $key=> $user)
 
@@ -30,6 +25,8 @@
                     <td>{{$key+1}} </td>
                     <td>{{$user->category_name}} </td>
                     <td>{{$user->category_type}} </td>
+                    <td><a href="#"><button class="btn btn-outline-dark">Edit</button></a></td>
+                      <td><a href="{{route('delete_category',['id'=>$user->id])}}"><button class="btn btn-outline-danger"><i class="fa fa-times" aria-hidden="true"></i></button></a></td>
                   </tr>
 
              @endforeach
@@ -37,6 +34,4 @@
     </tbody>
   </table>
 </div>
-
-</body>
-</html>
+@endsection

@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
+@extends('dashboard')
+@section('content')
 
-<div class="container m-5" >
-  <h2>Category-List Table</h2> <button class="btn btn-info m-5" style="position:absolute; top:10px; right:50px;" onclick="window.history.back()">back</button>
+<div class="container  mb-5" >
+  <h2>Post-List Table
+  </h2>
 
-  <table class="table ml-5">
+  <table class="table table-hover mt-3  ">
     <thead>
       <tr>
         <th>Id</th>
         <th>Title</th>
         <th>Discription</th>
         <th>Select option</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-light">
 
             @foreach($student as $key=> $students)
 
@@ -31,7 +24,11 @@
                     <td>{{$key+1}} </td>
                     <td>{{$students->title}} </td>
                     <td>{{$students->discription}} </td>
-                    <td>{{$students->category_select}} </td>
+                   <td> category type</td>
+
+
+                    <td><a href="{{route('editPost',['id'=>$students->id])}}"><button class="btn btn-outline-light"></button></a></td>
+                    <td><a href="javaScript:void(0);" onclick="deleteRecord('{{route('deletePost',['id'=>$students->id])}}');"><button class="btn btn-outline-danger"><i class="fa fa-times" aria-hidden="true"></i></button></a></td>
                   </tr>
 
              @endforeach
@@ -40,5 +37,13 @@
   </table>
 </div>
 
-</body>
-</html>
+
+<script>
+  function deleteRecord(deleteUrl){
+    if(confirm("Are you sure to delete??")){
+      window.location.href = deleteUrl;
+    }
+  }
+</script>
+
+@endsection

@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
+@extends('dashboard')
+@section('content')
 
-<div class="container">
-  <h2 class="m-5">Register form</h2> <button class="btn btn-info m-5" style="position:absolute; top:10px; right:50px;"> <a href="login">LogIn</a></button>
+<div class="container text-light pb-5">
+  <h2 class="p-2">Register form</h2> <button class="btn btn-light m-5" style="position:absolute; top:10px; right:50px;"> <a href="login">LogIn</a></button>
   <form action="registrationCode">
-  @csrf
+
    <div class="form-group">
       <label for="Name">Name:</label>
       <input type="text" class="form-control" id="Name" placeholder="Enter Name" name="Name">
@@ -39,11 +29,8 @@
       <label for="pwd">MobileNo:</label>
       <input type="number" class="form-control" id="pwd" placeholder="Enter MobileNo" name="MobileNo">
     </div>
-
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary mb-3">Submit</button>
   </form>
 </div>
 
-</body>
-</html>
+@endsection
