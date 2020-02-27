@@ -12,7 +12,7 @@ class CategoryController extends Controller
         return view('category');
     }
 
-    //select data
+    //select data2
     public function CaregoryCode(Request $req)
     {
         Category::categoryModel($req);
