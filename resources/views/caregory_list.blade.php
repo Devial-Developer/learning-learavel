@@ -11,7 +11,7 @@
     <thead>
       <tr>
         <th>Id</th>
-        <th>Category-Name</th>
+        <th>Category-Name2</th>
         <th>Select option</th>
         <th>Edit</th>
         <th>Delete</th>
