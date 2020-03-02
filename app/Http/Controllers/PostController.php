@@ -18,7 +18,7 @@ class PostController extends Controller
     public function postCode(Request $req)
     {
         Post::postMethod($req);
-
+        $userscount = DB::table('posts')->get();
         return redirect()->route('showPost');
     }
 

@@ -16,7 +16,7 @@
         <th>Delete</th>
       </tr>
     </thead>
-    <tbody class="text-light">
+    <tbody>
 
             @foreach($student as $key=> $students)
 

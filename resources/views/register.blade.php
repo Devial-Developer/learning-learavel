@@ -1,10 +1,10 @@
 @extends('dashboard')
 @section('content')
 
-<div class="container text-light pb-5">
+<div class="container pb-5">
   <h2 class="p-2">Register form</h2> <button class="btn btn-light m-5" style="position:absolute; top:10px; right:50px;"> <a href="login">LogIn</a></button>
   <form action="registrationCode">
-
+ @csrf
    <div class="form-group">
       <label for="Name">Name:</label>
       <input type="text" class="form-control" id="Name" placeholder="Enter Name" name="Name">

@@ -20,30 +20,31 @@
 // });
 
 //Registration
-Route::get('/', function () {
-    return view('register');
-});
+Route::get('/', 'CounController@dashboardName');
 
 //after submition
-Route::get('registrationCode', 'RegistrationController@index');
-Route::get('registrationCode', 'RegistrationController@registrationCode');
+Route::get('registrationCode', 'RegistrationController@index')->name('registrationCode');
+Route::get('registrationCode', 'RegistrationController@registrationCode')->name('registrationCode')->middleware('naming');
 
 //login
-Route::get('login', 'RegistrationController@login');
+Route::get('login', 'RegistrationController@login')->name('login')->middleware('naming');
 Route::get('loginCode', 'RegistrationController@loginCode');
 
 // after login come to dashboard
+/**
+ *
+ */
 Route::get('dashboard', 'RegistrationController@dashboard');
 
 //Add-category
-Route::get('category', 'CategoryController@Category');
+Route::get('category5', 'CategoryController@Category')->name('category')->middleware('naming');
 Route::get('CaregoryCode', 'CategoryController@CaregoryCode');
 
 //fetch data
 Route::get('showCategory', 'CategoryController@showCategory')->name('showCategory');
 
 //posts
-Route::get('post', 'PostController@FunctionNamePost');
+Route::get('post', 'PostController@FunctionNamePost')->name('post')->middleware('naming');
 //insert data
 Route::get('postCode', 'PostController@postCode');
 
@@ -58,3 +59,42 @@ Route::get('showPost', 'PostController@showPost')->name('showPost');
 Route::get('delete/{id}', 'PostController@delete')->name('deletePost');
 //post delete
 Route::get('delete-category/{id}', 'CategoryController@delete_category')->name('delete_category');
+
+/****
+ *  started blog
+ */
+Route::get('blog', 'BlogController@getBlog');
+/**
+ * Insert data in databse
+ */
+Route::post('list', 'BlogController@getdatablog');
+/**
+ * get all data in bloglist
+ */
+Route::get('blog_list', 'BlogController@getbloglist');
+/***
+ * Delete Blog
+ */
+Route::get('DeletePost/{id}', 'BlogController@deleteblog')->name('DeletePost');
+
+/****
+ * Edit blog data
+ */
+Route::get('Edit_data/{edit}', 'BlogController@editBlogDone')->name('Edit_data');
+
+/**
+ *
+ * fileupload
+ */
+Route::get('/uploadfile', 'uploadfileController@index');
+
+Route::post('username', 'uploadfileController@upload');
+
+//delete Image
+Route::get('deleteImage/{id}', 'uploadfileController@deleteImage');
+
+/**
+ * Edit Images  editimage
+ */
+Route::get('edit/{id}', 'uploadfileController@editimage');
+Route::post('updateDetails', 'uploadfileController@updateDetails')->name('updateDetails')->middleware('naming');

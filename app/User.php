@@ -33,7 +33,7 @@ class User extends Authenticatable
     public static function ins($request)
     {
 
-       $res= Self::create([
+        $res = Self::create([
             'name' => $request->Name,
             'Father' => $request->Father,
             'email' => $request->email,
@@ -42,7 +42,7 @@ class User extends Authenticatable
             'mobile' => $request->MobileNo,
         ]);
 
-             return $res;
+        return $res->save();
     }
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\DB;
+
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,31 +12,27 @@ class RegistrationController extends Controller
     {
 
         $res = User::ins($request);
-        
-            }
+        return $res;
 
-        public function registrationCode(){
-               
-               echo "welcome to Registration";
+    }
 
-        }
+    public function registrationCode()
+    {
+        return view('register');
 
+        echo "welcome to Registration";
 
+    }
 
+    public function login()
+    {
+        return view('login');
+    }
 
+    //fetch data
 
-
-
-     public function login()
-             {
-                 return view('login');
-              }
-        
-        //fetch data
-
-       
-        public function loginCode(Request $req)
-          {
+    public function loginCode(Request $req)
+    {
 
         $valid = array('email' => $req->email, 'password' => $req->pswd);
 

@@ -4,7 +4,7 @@
 <div class="container pt-2 pb-5">
   <h2>Post form</h2>
   <form action="postCode">
-
+ @csrf
    <div class="form-group">
       <label for="title">Title:</label>
       <input type="text" class="form-control" id="title" placeholder="Enter title.." name="title">
@@ -30,7 +30,7 @@
      </select>
   </div>
 
-    <button type="submit" class="btn btn-outline-light mb-3">Submit</button>
+    <button type="submit" class="btn btn-outline-primary mb-3">Submit</button>
   </form>
 </div>
 
