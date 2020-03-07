@@ -9,18 +9,29 @@ class Blog extends Model
     protected $table = 'blogs';
     protected $fillable = ['file_name', 'file'];
 
-/***
- * Insert data
- */
+    /***
+     * Insert data
+     */
 
     public static function blogModel($req)
     {
+        $filename = $req->file('file');
+        $filePath = $filename->getClientOriginalName();
+        $filename->move(public_path('/upload'), $filePath);
+
         $blogvalue = Self::create([
             'file_name' => $req->filename,
-            'file' => $req->file,
+            'file' => $filePath,
         ]);
 
         return $blogvalue->save();
+    }
+
+    //get data
+    public static function getBlogmodel()
+    {
+        return Self::all();
+
     }
 
     /****
@@ -30,7 +41,24 @@ class Blog extends Model
 
     public static function editBlogmodel($edit)
     {
-        self::where('id', $edit)->first();
+        return Self::where('id', $edit)->first();
     }
 
+    /***
+    upload file and edit
+     */
+    public static function updateBlogFile($request)
+    {
+        print_r($request->all());die;
+        $name = $request->input('filename');
+        $id = $request->input('id');
+        $filename = $request->file('file');
+        if ($request->file('file')) {
+            $filePath = $filename->getClientOriginalName();
+            $filename->move(public_path('/upload'), $filePath);
+
+        }
+
+        return Self::where('id', $id)->update(['file_name' => $name, 'file' => $filePath]);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -14,7 +15,6 @@ class BlogController extends Controller
     public function getBlog()
     {
         return view('blog');
-
     }
 
     /***
@@ -34,9 +34,9 @@ class BlogController extends Controller
      */
     public function getbloglist()
     {
-        $test = Blog::all();
-        return view('blog_list', ['test' => $test]);
-
+        $test = Blog::getBlogmodel();
+        $comBlog = Comment::all();
+        return view('blog_list', ['test' => $test, 'comBlog' => $comBlog]);
     }
 
     /***
@@ -60,4 +60,22 @@ class BlogController extends Controller
         return view('blog_edit', ['update' => $update]);
     }
 
+    public function editBlog(Request $request, $id)
+    {
+        $getDetails = Blog::find($id)->first();
+
+        return view('blog_edit', ['details' => $getDetails]);
+    }
+
+    public function updateBlog(Request $request)
+    {
+        print_r($request->all());
+
+        $name = $request->input('filename');
+        $id = $request->input('id');
+        $filename = $request->file('file');
+        $filePath = $filename->getClientOriginalName();
+        $filename->move(public_path('/upload'), $filePath);
+        return Self::where('id', $id)->update(['file_name' => $name, 'file' => $filePath]);
+    }
 }

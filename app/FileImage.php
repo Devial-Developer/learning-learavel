@@ -12,7 +12,6 @@ class FileImage extends Model
     public static function fileQuery($req)
     {
         $filename = $req->file('file');
-
         $filePath = $filename->getClientOriginalName();
         $filename->move(public_path('/upload'), $filePath);
 
@@ -41,6 +40,7 @@ class FileImage extends Model
     {
         return Self::where('id', $req)->first();
     }
+
     public static function updateFile($request)
     {
         $name = $request->input('username');

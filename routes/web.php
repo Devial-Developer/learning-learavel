@@ -80,7 +80,24 @@ Route::get('DeletePost/{id}', 'BlogController@deleteblog')->name('DeletePost');
 /****
  * Edit blog data
  */
-Route::get('Edit_data/{edit}', 'BlogController@editBlogDone')->name('Edit_data');
+
+Route::get('Edit/{edit}', 'BlogController@editBlogDone');
+Route::get('edit-blog/{id}', 'BlogController@editBlog')->name('editBlog');
+Route::post('updateBlog', 'BlogController@updateBlog')->name('updateBlog');
+
+/**
+ * comment box in blog list   getCommentblog
+ */
+Route::get('comment', 'CommentController@viewComment')->name('comment');
+/**
+ * insert comment
+ */
+Route::get('commentInto', 'CommentController@getCommentblog')->name('commentInto');
+
+/***
+ * get all comment
+ */
+Route::get('Show_comment', 'CommentController@getAllCommentData');
 
 /**
  *
@@ -95,6 +112,15 @@ Route::get('deleteImage/{id}', 'uploadfileController@deleteImage');
 
 /**
  * Edit Images  editimage
+ *
  */
+
 Route::get('edit/{id}', 'uploadfileController@editimage');
+
 Route::post('updateDetails', 'uploadfileController@updateDetails')->name('updateDetails')->middleware('naming');
+
+
+/*--------Add-More-----------*/
+Route::get('Add-more','AddController@addForm')->name('Add-more');
+// Insert data in database
+Route::post('saveData','AddController@saveData');

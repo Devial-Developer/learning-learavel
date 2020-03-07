@@ -27,7 +27,7 @@
                    <td> category type</td>
 
 
-                    <td><a href="{{route('editPost',['id'=>$students->id])}}"><button class="btn btn-outline-light"></button></a></td>
+                    <td><a href="{{route('editPost',['id'=>$students->id])}}"><button class="btn btn-outline-info">Edit</button></a></td>
                     <td><a href="javaScript:void(0);" onclick="deleteRecord('{{route('deletePost',['id'=>$students->id])}}');"><button class="btn btn-outline-danger"><i class="fa fa-times" aria-hidden="true"></i></button></a></td>
                   </tr>
 
